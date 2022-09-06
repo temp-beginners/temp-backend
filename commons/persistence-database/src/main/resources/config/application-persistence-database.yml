@@ -5,8 +5,10 @@ spring:
 spring:
   config:
     activate:
-      on-profile: test
+      on-profile: test, local
   jpa:
     database: h2
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
+    hibernate:
+      ddl-auto: create
