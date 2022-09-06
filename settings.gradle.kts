@@ -22,4 +22,7 @@ include("commons:common-util")
 include("commons:health-check")
 include("commons:persistence-database")
 include("commons:logback-appender")
+
 include("application")
+include("application:application-persentation")
+include("application:application-core")
