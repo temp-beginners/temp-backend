@@ -1,5 +1,6 @@
 dependencies {
     implementation(project(":commons:model"))
+    implementation(project(":commons:common-util"))
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     // Persistence
