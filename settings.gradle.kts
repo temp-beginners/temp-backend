@@ -24,5 +24,5 @@ include("commons:persistence-database")
 include("commons:logback-appender")
 
 include("application")
-include("application:application-persentation")
+include("application:application-presentation")
 include("application:application-core")
