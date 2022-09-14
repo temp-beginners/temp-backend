@@ -1,5 +1,6 @@
 package kr.dataportal.application.persistence.entity
 
+import kr.dataportal.application.enums.AuthenticationType
 import kr.dataportal.application.persistence.config.jpa.BaseEntity
 import javax.persistence.*
 
@@ -9,13 +10,13 @@ import javax.persistence.*
  */
 @Table(name = "user_authentication")
 @Entity
-class UserAuthentication(
+class AccountAuthentication(
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    val user: User,
+    @JoinColumn(name = "user_account_id")
+    val userAccount: UserAccount,
 
     @Enumerated(EnumType.STRING)
-    var authType: AuthType,
+    var authType: AuthenticationType,
 
     var authText: String
 ) : BaseEntity() {
@@ -23,16 +24,12 @@ class UserAuthentication(
     companion object {
 
         fun authPlain(
-            user: User,
+            userAccount: UserAccount,
             password: String
-        ) = UserAuthentication(
-            user = user,
-            authType = AuthType.PLAIN,
+        ) = AccountAuthentication(
+            userAccount = userAccount,
+            authType = AuthenticationType.PLAIN,
             authText = password
         )
-    }
-
-    enum class AuthType {
-        PLAIN, GOOGLE, KAKAO
     }
 }

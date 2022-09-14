@@ -49,6 +49,8 @@ configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("io.mockk:mockk:$mockkVersion")
         testImplementation("io.strikt:strikt-core:$striktVersion")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 
         // Annotation Processing Tool
         annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")

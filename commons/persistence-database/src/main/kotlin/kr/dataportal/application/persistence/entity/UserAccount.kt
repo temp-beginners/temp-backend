@@ -8,9 +8,9 @@ import javax.persistence.Table
  * @author Heli
  * Created on 2022. 09. 06
  */
-@Table(name = "user")
+@Table(name = "user_account")
 @Entity
-class User private constructor(
+class UserAccount private constructor(
     var email: String
 ) : BaseEntity() {
 
@@ -18,7 +18,7 @@ class User private constructor(
 
         fun create(
             email: String
-        ) = User(
+        ) = UserAccount(
             email = email
         )
     }
