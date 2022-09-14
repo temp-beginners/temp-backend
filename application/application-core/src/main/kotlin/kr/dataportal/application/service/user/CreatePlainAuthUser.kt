@@ -23,16 +23,13 @@ class CreatePlainAuthUser(
     @Transactional
     override fun command(command: CreatePlainAuthUserUseCase.Command): CreatePlainAuthUserUseCase.Result {
         val (email, password) = command
-        val userAccount = UserAccount.create(email = email).let {
-            userAccountRepository.save(it)
-        }
+        val userAccount = UserAccount.create(email = email)
+            .let(userAccountRepository::save)
 
         val authentication = AccountAuthentication.authPlain(
             userAccount = userAccount,
             password = password
-        ).let {
-            accountAuthenticationRepository.save(it)
-        }
+        ).let(accountAuthenticationRepository::save)
 
         return CreatePlainAuthUserUseCase.Result(
             user = UserDefinition(
