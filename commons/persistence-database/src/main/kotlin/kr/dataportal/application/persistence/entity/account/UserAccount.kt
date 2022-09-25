@@ -1,4 +1,4 @@
-package kr.dataportal.application.persistence.entity
+package kr.dataportal.application.persistence.entity.account
 
 import kr.dataportal.application.persistence.config.jpa.BaseEntity
 import javax.persistence.Entity
