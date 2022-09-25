@@ -34,7 +34,7 @@ internal class CertificateChallengeTest {
     private lateinit var certificationRepository: ChallengeCertificationRepository
 
     @MockK
-    private lateinit var challengeCertificationAdditionalInfoRepository: ChallengeCertificationAdditionalInfoRepository
+    private lateinit var additionalInfoRepository: ChallengeCertificationAdditionalInfoRepository
 
     private val journeyChallengeRepository: JourneyChallengeRepository = FakeJourneyChallengeRepository()
 
@@ -53,7 +53,7 @@ internal class CertificateChallengeTest {
 
         val additionalInfoSlot = slot<ChallengeCertificationAdditionalInfo>()
         every {
-            challengeCertificationAdditionalInfoRepository.save(capture(additionalInfoSlot))
+            additionalInfoRepository.save(capture(additionalInfoSlot))
         } answers {
             additionalInfoSlot.captured.apply {
                 id = 1L
@@ -66,7 +66,7 @@ internal class CertificateChallengeTest {
 
         sut = CertificateChallenge(
             certificationRepository = certificationRepository,
-            additionalInfoRepository = challengeCertificationAdditionalInfoRepository,
+            additionalInfoRepository = additionalInfoRepository,
             journeyChallengeRepository = journeyChallengeRepository
         )
     }
@@ -100,6 +100,11 @@ internal class CertificateChallengeTest {
         val command = command()
 
         val (result) = sut.command(command = command)
+
+//        verify { journeyChallengeRepository.findByUserIdAndJourneyId(1L, 1L) }
+        verify { certificationRepository.findByChallengeIdAndJourneyNodeId(1L, command.journeyNodeId) }
+        verify { certificationRepository.save(any()) }
+        verify { additionalInfoRepository.save(any()) }
 
         expectThat(result) {
             get { id } isEqualTo 1L
