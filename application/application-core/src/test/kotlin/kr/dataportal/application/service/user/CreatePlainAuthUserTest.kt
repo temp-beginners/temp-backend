@@ -5,10 +5,10 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.slot
 import kr.dataportal.application.enums.AuthenticationType
-import kr.dataportal.application.persistence.entity.AccountAuthentication
-import kr.dataportal.application.persistence.entity.UserAccount
-import kr.dataportal.application.persistence.repository.AccountAuthenticationRepository
-import kr.dataportal.application.persistence.repository.UserAccountRepository
+import kr.dataportal.application.persistence.entity.account.AccountAuthentication
+import kr.dataportal.application.persistence.entity.account.UserAccount
+import kr.dataportal.application.persistence.repository.account.AccountAuthenticationRepository
+import kr.dataportal.application.persistence.repository.account.UserAccountRepository
 import kr.dataportal.application.port.user.CreatePlainAuthUserUseCase
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

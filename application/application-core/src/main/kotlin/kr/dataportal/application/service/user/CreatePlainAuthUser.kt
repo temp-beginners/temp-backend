@@ -2,10 +2,10 @@ package kr.dataportal.application.service.user
 
 import kr.dataportal.application.definition.UserDefinition
 import kr.dataportal.application.persistence.config.jpa.requiredId
-import kr.dataportal.application.persistence.entity.AccountAuthentication
-import kr.dataportal.application.persistence.entity.UserAccount
-import kr.dataportal.application.persistence.repository.AccountAuthenticationRepository
-import kr.dataportal.application.persistence.repository.UserAccountRepository
+import kr.dataportal.application.persistence.entity.account.AccountAuthentication
+import kr.dataportal.application.persistence.entity.account.UserAccount
+import kr.dataportal.application.persistence.repository.account.AccountAuthenticationRepository
+import kr.dataportal.application.persistence.repository.account.UserAccountRepository
 import kr.dataportal.application.port.user.CreatePlainAuthUserUseCase
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional

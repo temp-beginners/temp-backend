@@ -1,6 +1,6 @@
-package kr.dataportal.application.persistence.repository
+package kr.dataportal.application.persistence.repository.account
 
-import kr.dataportal.application.persistence.entity.AccountAuthentication
+import kr.dataportal.application.persistence.entity.account.AccountAuthentication
 import org.springframework.data.jpa.repository.JpaRepository
 
 /**
