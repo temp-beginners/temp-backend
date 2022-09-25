@@ -1,4 +1,4 @@
-package kr.dataportal.application.port.user
+package kr.dataportal.application.usercase.account
 
 import kr.dataportal.application.definition.UserDefinition
 

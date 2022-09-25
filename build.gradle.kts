@@ -46,9 +46,12 @@ configure(subprojects.filter { it.name !in nonDependenciesProjects }) {
         implementation("org.springframework.boot:spring-boot-starter-aop")
 
         // Test
-        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("org.springframework.boot:spring-boot-starter-test") {
+            exclude(module = "mockito-core")
+        }
         testImplementation("io.mockk:mockk:$mockkVersion")
         testImplementation("io.strikt:strikt-core:$striktVersion")
+        testImplementation("com.ninja-squad:springmockk:3.1.1")
         testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 

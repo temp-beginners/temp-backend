@@ -1,4 +1,4 @@
-package kr.dataportal.application.service.user
+package kr.dataportal.application.service.account
 
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -9,7 +9,7 @@ import kr.dataportal.application.persistence.entity.account.AccountAuthenticatio
 import kr.dataportal.application.persistence.entity.account.UserAccount
 import kr.dataportal.application.persistence.repository.account.AccountAuthenticationRepository
 import kr.dataportal.application.persistence.repository.account.UserAccountRepository
-import kr.dataportal.application.port.user.CreatePlainAuthUserUseCase
+import kr.dataportal.application.usercase.account.CreatePlainAuthUserUseCase
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -17,7 +17,8 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 
 /**
- * @Author Heli
+ * @author Heli
+ * Created on 2022. 09. 07
  */
 @ExtendWith(MockKExtension::class)
 internal class CreatePlainAuthUserTest {
@@ -28,7 +29,7 @@ internal class CreatePlainAuthUserTest {
     @MockK
     private lateinit var accountAuthenticationRepository: AccountAuthenticationRepository
 
-    private lateinit var sut: CreatePlainAuthUser
+    private lateinit var sut: CreatePlainAuthUserUseCase
 
     @BeforeEach
     fun init() {
