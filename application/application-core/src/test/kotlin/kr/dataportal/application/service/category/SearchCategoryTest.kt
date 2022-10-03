@@ -52,6 +52,7 @@ internal class SearchCategoryTest {
             categoryRepository = categoryRepository
         )
     }
+
     @Test
     fun `category를 생성할 수 있다`() {
         // given
@@ -69,10 +70,11 @@ internal class SearchCategoryTest {
             get { description } isEqualTo null
         }
     }
+
     @Test
     fun `category를 조회할 수 있다`() {
         // given
-        val categoryObj = Category(category.라이딩,"11")
+        val categoryObj = Category(category.라이딩, "11")
         categoryRepository.save(categoryObj)
 
         // when
@@ -94,22 +96,21 @@ internal class SearchCategoryTest {
             val (result) = sutSearch.command()
         }*/
 
-       // then
-       /*expectThat(results) {
-           println( get { category })
-           //get { results. } isEqualTo category.등산
-          // get { categoryDescription } isEqualTo ""
-       }*/
-       /* val categoryList = listOf(
-            Category(category.등산, null),
-            Category(category.라이딩, null),
+        // then
+        /*expectThat(results) {
+            println( get { category })
+            //get { results. } isEqualTo category.등산
+           // get { categoryDescription } isEqualTo ""
+        }*/
+        /* val categoryList = listOf(
+             Category(category.등산, null),
+             Category(category.라이딩, null),
 
-        )
+         )
 
-        every { categoryRepository.findAllBy() } returns categoryList
+         every { categoryRepository.findAllBy() } returns categoryList
 
-        verify(exactly = 1) { sutSearch.command() }*/
-
+         verify(exactly = 1) { sutSearch.command() }*/
 
 
     }

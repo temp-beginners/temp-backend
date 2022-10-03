@@ -10,8 +10,8 @@ interface CreateCategoryUseCase {
         val title: category,
         val description: String?
     )
-
+ 
     data class Result(
-        var category : categoryDefinition
+        var category: categoryDefinition
     )
 }

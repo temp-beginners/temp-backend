@@ -21,6 +21,7 @@ internal class SearchJourneyTest {
 
     @MockK
     private lateinit var journeyRepository: JourneyRepository
+
     /*@MockK
     private lateinit var categoryRepository: CategoryRepository
 */
@@ -65,6 +66,7 @@ internal class SearchJourneyTest {
             journeyRepository = journeyRepository
         )
     }
+
     @Test
     fun `journey를 생성할 수 있다`() {
         // given

@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
 @Component
-class SearchJourney (
+class SearchJourney(
     private val journeyRepository: JourneyRepository
-    ) : SearchJourneyUseCase{
-
+) : SearchJourneyUseCase {
+ 
     @Transactional
     override fun command(command: SearchJourneyUseCase.Command): List<SearchJourneyUseCase.Result> {
         val (category) = command

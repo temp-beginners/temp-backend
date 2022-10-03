@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
 @Component
-class SearchCategory (
-    private val categoryRepository : CategoryRepository
-    ) : SearchCategoryUseCase{
+class SearchCategory(
+    private val categoryRepository: CategoryRepository
+) : SearchCategoryUseCase {
 
     @Transactional(readOnly = true)
     override fun command(): List<SearchCategoryUseCase.Result> {

@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
 @Component
-class CreateCategory (
-    private val categoryRepository : CategoryRepository
-) : CreateCategoryUseCase{
+class CreateCategory(
+    private val categoryRepository: CategoryRepository
+) : CreateCategoryUseCase {
 
     @Transactional
-    override fun command(command: CreateCategoryUseCase.Command): CreateCategoryUseCase.Result{
+    override fun command(command: CreateCategoryUseCase.Command): CreateCategoryUseCase.Result {
         val (title, description) = command
 
-        val categoryObj = Category.create(title = title , description = description)
+        val categoryObj = Category.create(title = title, description = description)
             .let(categoryRepository::save)
 
 

@@ -8,11 +8,11 @@ interface CreateJourneyUseCase {
 
     data class Command(
         val category: Category,
-        var title : String,
-        val description : String?
+        var title: String,
+        val description: String?
     )
 
     data class Result(
-        var journey : JourneyDefinition
+        var journey: JourneyDefinition
     )
 }

@@ -13,9 +13,9 @@ class Category constructor(
     @Enumerated(EnumType.STRING)
     var title: category,
 
-    var description : String?,
+    var description: String?,
 
-) : BaseEntity(){
+    ) : BaseEntity() {
 
     companion object {
         fun create(

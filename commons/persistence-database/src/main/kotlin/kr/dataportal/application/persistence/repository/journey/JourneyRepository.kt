@@ -4,7 +4,7 @@ import kr.dataportal.application.persistence.entity.category.Category
 import kr.dataportal.application.persistence.entity.journey.Journey
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface JourneyRepository : JpaRepository<Journey, Long>{
+interface JourneyRepository : JpaRepository<Journey, Long> {
 
-    fun findByCategoryOrNull(category: Category?) : List<Journey>
+    fun findByCategoryOrNull(category: Category?): List<Journey>
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 
 @Component
-class CreateJourney  (
+class CreateJourney(
     private val journeyRepository: JourneyRepository,
     //private val categoryRepository : CategoryRepository
 ) : CreateJourneyUseCase {

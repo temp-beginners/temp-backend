@@ -11,6 +11,7 @@ interface SearchCategoryUseCase {
         var category: categoryDefinition
 
     )
+
     companion object {
         fun of(category: Category): Result {
             return Result(

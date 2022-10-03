@@ -12,7 +12,7 @@ interface SearchJourneyUseCase {
     )
 
     data class Result(
-        var journey : JourneyDefinition
+        var journey: JourneyDefinition
     )
 
     companion object {
