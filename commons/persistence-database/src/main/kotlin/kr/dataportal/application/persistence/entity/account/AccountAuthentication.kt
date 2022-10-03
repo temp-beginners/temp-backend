@@ -8,7 +8,7 @@ import javax.persistence.*
  * @author Heli
  * Created on 2022. 09. 06
  */
-@Table(name = "user_authentication")
+@Table(name = "account_authentication")
 @Entity
 class AccountAuthentication(
     @ManyToOne

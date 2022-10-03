@@ -1,6 +1,6 @@
 package kr.dataportal.application.api
 
-import kr.dataportal.application.port.user.CreatePlainAuthUserUseCase
+import kr.dataportal.application.usercase.account.CreatePlainAuthUserUseCase
 import org.springframework.web.bind.annotation.RestController
 
 /**
