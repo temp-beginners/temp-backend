@@ -7,27 +7,40 @@ import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.Table
 
-@Table(name = "journey")
+@Table(name = "journey_node")
 @Entity
-class Journey(
+class JourneyNode(
     @ManyToOne
     @JoinColumn(name = "category_id")
     val category: Category,
 
+    @ManyToOne
+    @JoinColumn(name = "journey_id")
+    val journey: Journey,
+
     val title: String,
 
-    var description: String = "",
-) : BaseEntity() {
+    var description: String? = "",
 
+    val level: Long,
+
+    val nodeNum: Long,
+) : BaseEntity() {
     companion object {
         fun create(
             category: Category,
+            journey: Journey,
             title: String,
-            description: String = "",
-        ) = Journey(
+            description: String? = "",
+            level: Long,
+            nodeNum: Long,
+        ) = JourneyNode(
             category = category,
+            journey = journey,
             title = title,
-            description = description
+            description = description,
+            level = level,
+            nodeNum = nodeNum,
         )
     }
 }
