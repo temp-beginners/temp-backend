@@ -1,29 +1,15 @@
 package kr.dataportal.application.usercase.journey
 
 import kr.dataportal.application.definition.JourneyDefinition
-import kr.dataportal.application.persistence.entity.category.Category
-import kr.dataportal.application.persistence.entity.journey.Journey
 
 interface SearchJourneyUseCase {
-    fun command(command: Command): List<Result>
+    fun command(command: Command): Result
 
     data class Command(
-        val category: Category?,
+        val categoryId: Long? = null
     )
 
     data class Result(
-        var journey: JourneyDefinition
+        var searchJourney: JourneyDefinition
     )
-
-    companion object {
-        fun of(journey: Journey): Result {
-            return Result(
-                JourneyDefinition(
-                    id = journey.id!!,
-                    title = journey.title,
-                    description = journey.description
-                )
-            )
-        }
-    }
 }

@@ -3,9 +3,8 @@ package kr.dataportal.application.service.category
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockk
 import io.mockk.slot
-import kr.dataportal.application.enums.category
+import kr.dataportal.application.definition.CategoryResponse
 import kr.dataportal.application.persistence.entity.category.Category
 import kr.dataportal.application.persistence.repository.category.CategoryRepository
 import kr.dataportal.application.usercase.category.CreateCategoryUseCase
@@ -38,13 +37,16 @@ internal class SearchCategoryTest {
 
             }
         }
-        /*every {
-            categoryRepository.findAllBy()
-        } returns null*/
         every {
-            categoryRepository.findByTitle(categoryTitle = category.라이딩)
-        } returns null
-
+            categoryRepository.findAllBy()
+        } answers {
+            listOf(
+                CategoryResponse(
+                    id = 1L,
+                    title = "등산",
+                )
+            )
+        }
         sutCreate = CreateCategory(
             categoryRepository = categoryRepository
         )
@@ -54,64 +56,25 @@ internal class SearchCategoryTest {
     }
 
     @Test
-    fun `category를 생성할 수 있다`() {
+    fun `category를 조회 할 수 있다`() {
         // given
         val command = CreateCategoryUseCase.Command(
-            title = category.등산,
-            description = null
+            title = "등산",
         )
+        sutCreate.command(command = command)
+        
         // when
-        val (result) = sutCreate.command(command = command)
+        var (result) = sutSearch.command()
 
         // then
         expectThat(result) {
-            get { id } isEqualTo 1L
-            get { title } isEqualTo category.등산
-            get { description } isEqualTo null
+            get { categoryList } isEqualTo listOf(
+                CategoryResponse(
+                    id = 1L,
+                    title = "등산"
+                )
+            )
         }
     }
 
-    @Test
-    fun `category를 조회할 수 있다`() {
-        // given
-        val categoryObj = Category(category.라이딩, "11")
-        categoryRepository.save(categoryObj)
-
-        // when
-        every {
-            categoryRepository.findByTitle(categoryTitle = category.라이딩)
-        } returns mockk()
-
-        //var results = categoryRepository.findByTitle(categoryTitle = category.라이딩)
-        //assertThat(results).hasSize(1)
-        //println("$results")
-
-        /*val categorySlot = slot<Category>()
-        val categoryObj = Category(category.라이딩,"11")
-        categoryRepository.save(categoryObj)
-
-
-        //when
-        verify {
-            val (result) = sutSearch.command()
-        }*/
-
-        // then
-        /*expectThat(results) {
-            println( get { category })
-            //get { results. } isEqualTo category.등산
-           // get { categoryDescription } isEqualTo ""
-        }*/
-        /* val categoryList = listOf(
-             Category(category.등산, null),
-             Category(category.라이딩, null),
-
-         )
-
-         every { categoryRepository.findAllBy() } returns categoryList
-
-         verify(exactly = 1) { sutSearch.command() }*/
-
-
-    }
 }

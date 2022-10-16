@@ -1,6 +1,8 @@
 package kr.dataportal.application.service.category
 
-import kr.dataportal.application.definition.categoryDefinition
+import kr.dataportal.application.definition.CategoryDefinition
+import kr.dataportal.application.definition.CategoryResponse
+import kr.dataportal.application.persistence.config.jpa.requiredId
 import kr.dataportal.application.persistence.entity.category.Category
 import kr.dataportal.application.persistence.repository.category.CategoryRepository
 import kr.dataportal.application.usercase.category.CreateCategoryUseCase
@@ -16,15 +18,18 @@ class CreateCategory(
     override fun command(command: CreateCategoryUseCase.Command): CreateCategoryUseCase.Result {
         val (title, description) = command
 
-        val categoryObj = Category.create(title = title, description = description)
+        val category = Category.create(title = title, description = description)
             .let(categoryRepository::save)
 
-
         return CreateCategoryUseCase.Result(
-            category = categoryDefinition(
-                id = categoryObj.id!!,
-                title = categoryObj.title,
-                description = categoryObj.description
+            createCategory = CategoryDefinition(
+                categoryList = listOf(
+                    CategoryResponse(
+                        id = category.requiredId,
+                        title = category.title,
+                        description = category.description,
+                    )
+                ),
             )
         )
     }
